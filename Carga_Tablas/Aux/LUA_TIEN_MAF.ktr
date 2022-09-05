@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>3_ETL</name>
+    <name>LUA_TIEN_MAF</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,65 +428,23 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2021/03/02 10:52:58.518</created_date>
+    <created_date>2020/02/11 14:07:14.679</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2021/03/02 10:52:58.518</modified_date>
+    <modified_date>2020/02/11 14:07:14.679</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>CLOUD</note>
-      <xloc>32</xloc>
-      <yloc>288</yloc>
-      <width>50</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>ON PREMISE</note>
-      <xloc>32</xloc>
-      <yloc>96</yloc>
-      <width>78</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
-    <name>MSTRDB PDI</name>
-    <server>172.16.125.125</server>
+    <name>MSTRDB PDI DESA</name>
+    <server>mstr-desa.tata.com.uy</server>
     <type>ORACLE</type>
     <access>Native</access>
-    <database>MSTRDB</database>
+    <database>mstrdbdesa</database>
     <port>1521</port>
-    <username>PDI</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bea28bf3</password>
+    <username>dwh</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10be96b8d2</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -516,6 +474,10 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
+        <code>SQL_CONNECT</code>
+        <attribute>alter session set nls_date_format = 'DD/MM/YYYY';</attribute>
+      </attribute>
+      <attribute>
         <code>STRICT_NUMBER_38_INTERPRETATION</code>
         <attribute>N</attribute>
       </attribute>
@@ -534,29 +496,25 @@
     </attributes>
   </connection>
   <connection>
-    <name>Snowflake_PDI_KEYS</name>
-    <server/>
-    <type>GENERIC</type>
+    <name>Snowflake CARGA</name>
+    <server>dp32414.us-east-1.snowflakecomputing.com</server>
+    <type>SNOWFLAKE</type>
     <access>Native</access>
-    <database/>
-    <port>1521</port>
-    <username/>
-    <password>Encrypted </password>
+    <database>MSTRDB</database>
+    <port>443</port>
+    <username>PDI</username>
+    <password>Encrypted 2be98afc86aa7b380a648a03e8cc2fe82</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
       <attribute>
-        <code>CUSTOM_DRIVER_CLASS</code>
-        <attribute>net.snowflake.client.jdbc.SnowflakeDriver</attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.ssl</code>
+        <attribute>on</attribute>
       </attribute>
       <attribute>
-        <code>CUSTOM_URL</code>
-        <attribute>jdbc:snowflake://dp32414.us-east-1.snowflakecomputing.com/?user=PDI&amp;private_key_file=/home/bi/Snowflake_keys/keys_pdi/pdi_key.p8</attribute>
-      </attribute>
-      <attribute>
-        <code>DATABASE_DIALECT_ID</code>
-        <attribute>Generic database</attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.warehouse</code>
+        <attribute>Compute_wh</attribute>
       </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -572,7 +530,66 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>1521</attribute>
+        <attribute>443</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>Snowflake CARGA DESA</name>
+    <server>dp32414.us-east-1.snowflakecomputing.com</server>
+    <type>SNOWFLAKE</type>
+    <access>Native</access>
+    <database>MSTRDBDESA</database>
+    <port>443</port>
+    <username>PDI</username>
+    <password>Encrypted 2be98afc86aa7b380a648a03e8cc2fe82</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.ssl</code>
+        <attribute>on</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.warehouse</code>
+        <attribute>Compute_wh</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>443</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -598,80 +615,110 @@
   </connection>
   <order>
     <hop>
-      <from>SQL_Snow_VENTA_Local</from>
-      <to>Snow_VENTA_Local</to>
+      <from>LUA_TIEN_MAF</from>
+      <to>CARGA ODS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>LUA_TIEN_MAF</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SQL_MSTR_ODS_VENTA_Local</from>
-      <to>MSTR_ODS_VENTA_Local</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>MSTR_ODS_VENTA_Local</from>
-      <to>Join rows (cartesian product) VENTA_Locales</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Snow_VENTA_Local</from>
-      <to>Join rows (cartesian product) VENTA_Locales</to>
+      <from>Select values</from>
+      <to>Snowflake Bulk Loader 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Join rows (cartesian product) VENTA_Locales</name>
-    <type>JoinRows</type>
+    <name>CARGA ODS</name>
+    <type>TableOutput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue/>
-        <function>=</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MSTR_ODS_VENTA_Local</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
+    <connection>Snowflake CARGA</connection>
+    <schema>ODS_MERCADERIAS</schema>
+    <table>FT_VENTAS_SANROQUE</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
       <field>
-        <name>COUNT(DISTINCT(GEOG_LOCL_COD))</name>
-        <rename>MSTR_ODS_VENTA_Local</rename>
+        <column_name>TIEM_DIA_ID</column_name>
+        <stream_name>TIEM_DIA_ID</stream_name>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <field>
+        <column_name>HORA_HORA_COD</column_name>
+        <stream_name>HORA_HORA_COD</stream_name>
+      </field>
+      <field>
+        <column_name>ARTC_ARSR_COD</column_name>
+        <stream_name>ARTC_ARSR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>GEOG_LOSR_COD</column_name>
+        <stream_name>GEOG_LOSR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>CAJR_CASR_COD</column_name>
+        <stream_name>CAJR_CASR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>AUTORIZA_SUPERVISORA</column_name>
+        <stream_name>AUTORIZA_SUPERVISORA</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_NRO_CAJA_SR</column_name>
+        <stream_name>VNTA_NRO_CAJA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_NRO_TKT_SR</column_name>
+        <stream_name>VNTA_NRO_TKT_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_IMP_CIVA_SR</column_name>
+        <stream_name>VNTA_IMP_CIVA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_IMP_SIVA_SR</column_name>
+        <stream_name>VNTA_IMP_SIVA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_UNIDADES_SR</column_name>
+        <stream_name>VNTA_UNIDADES_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_TIPO_TKT_SR</column_name>
+        <stream_name>VNTA_TIPO_TKT_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_TIPO_LINEA_SR</column_name>
+        <stream_name>VNTA_TIPO_LINEA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>PROV_SRPR_COD</column_name>
+        <stream_name>PROV_SRPR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_COSTO_SR</column_name>
+        <stream_name>VNTA_COSTO_SR</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -683,12 +730,12 @@
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>352</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>SQL_MSTR_ODS_VENTA_Local</name>
+    <name>LUA_TIEN_MAF</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -698,61 +745,27 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>MSTRDB PDI</connection>
-    <sql>
-
+    <connection>MSTRDB PDI DESA</connection>
+    <sql>SELECT *
+FROM DWH.LUA_TIEN_MAF
+WHERE tiem_dia_id >= (select trunc(sysdate) -800 from dual)
 </sql>
-    <limit>0</limit>
+    <limit/>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SQL_Snow_VENTA_Local</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Snowflake_PDI_KEYS</connection>
-    <sql>-- Cantidad de locales
-</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
+    <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <cached_row_meta_active>N</cached_row_meta_active>
     <row-meta>
       <value-meta>
-        <type>Integer</type>
+        <type>Timestamp</type>
         <storagetype>normal</storagetype>
-        <name>COUNT(DISTINCT(GEOG_LOCL_ID))</name>
-        <length>15</length>
-        <precision>0</precision>
-        <origin>SQL_Snow_VENTA_Local</origin>
-        <comments>COUNT(DISTINCT(GEOG_LOCL_ID))</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
+        <name>TIEM_DIA_ID</name>
+        <length>0</length>
+        <precision>-1</precision>
+        <origin>LUA_TIEN_MAF</origin>
+        <comments>TIEM_DIA_ID</comments>
+        <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -764,7 +777,30 @@
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Montevideo</date_format_timezone>
+        <date_format_timezone>Europe/Madrid</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Timestamp</type>
+        <storagetype>normal</storagetype>
+        <name>TIEM_DIA_MAF_ID</name>
+        <length>0</length>
+        <precision>-1</precision>
+        <origin>LUA_TIEN_MAF</origin>
+        <comments>TIEM_DIA_MAF_ID</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Madrid</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -777,16 +813,16 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>160</yloc>
+      <xloc>192</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Snow_VENTA_Local</name>
+    <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -795,10 +831,46 @@
     </partitioning>
     <fields>
       <field>
-        <name>COUNT(DISTINCT(GEOG_LOCL_ID))</name>
-        <rename>Snow_VENTA_Local</rename>
+        <name>TIEM_DIA_ID</name>
+      </field>
+      <field>
+        <name>TIEM_DIA_MAF_ID</name>
       </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>TIEM_DIA_ID</name>
+        <rename>TIEM_DIA_ID</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>TIEM_DIA_MAF_ID</name>
+        <rename>TIEM_DIA_MAF_ID</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -810,7 +882,54 @@
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>160</yloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Snowflake Bulk Loader 2</name>
+    <type>SnowflakeBulkLoader</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Snowflake CARGA DESA</connection>
+    <target_schema>ODS_MERCADERIAS</target_schema>
+    <target_table>LUA_TIEN_MAF</target_table>
+    <location_type>user</location_type>
+    <stage_name/>
+    <work_directory>/home/BI/pdi_scripts/Dossiers_nube/Aux/Carga</work_directory>
+    <on_error>abort</on_error>
+    <error_limit/>
+    <split_size>400000</split_size>
+    <remove_files>Y</remove_files>
+    <data_type>csv</data_type>
+    <trim_whitespace>N</trim_whitespace>
+    <null_if/>
+    <error_column_mismatch>Y</error_column_mismatch>
+    <strip_null>N</strip_null>
+    <ignore_utf8>N</ignore_utf8>
+    <allow_duplicate_element>N</allow_duplicate_element>
+    <enable_octal>N</enable_octal>
+    <json_field/>
+    <specify_fields>N</specify_fields>
+    <fields>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>3_ETL</name>
+  <name>LU_ORIGEN_DESCUENTO</name>
   <description/>
   <extended_description/>
   <job_version/>
   <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2021/02/19 10:44:25.571</created_date>
+  <created_date>2020/02/13 10:07:32.940</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2021/02/19 10:44:25.571</modified_date>
+  <modified_date>2020/02/13 10:07:32.940</modified_date>
   <parameters>
     </parameters>
   <connection>
-    <name>MSTRDB</name>
-    <server>172.16.125.125</server>
+    <name>MSTRDB PDI DESA</name>
+    <server>mstr-desa.tata.com.uy</server>
     <type>ORACLE</type>
     <access>Native</access>
-    <database>MSTRDB</database>
+    <database>mstrdbdesa</database>
     <port>1521</port>
-    <username>PDI</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bea28bf3</password>
+    <username>dwh</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10be96b8d2</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -50,16 +50,20 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
+        <code>SQL_CONNECT</code>
+        <attribute>alter session set nls_date_format = 'DD/MM/YYYY';</attribute>
+      </attribute>
+      <attribute>
         <code>STRICT_NUMBER_38_INTERPRETATION</code>
         <attribute>N</attribute>
       </attribute>
       <attribute>
         <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>N</attribute>
+        <attribute>Y</attribute>
       </attribute>
       <attribute>
         <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>N</attribute>
+        <attribute>Y</attribute>
       </attribute>
       <attribute>
         <code>USE_POOLING</code>
@@ -68,29 +72,25 @@
     </attributes>
   </connection>
   <connection>
-    <name>Snowflake_PDI_KEYS</name>
-    <server/>
-    <type>GENERIC</type>
+    <name>Snowflake CARGA DESA</name>
+    <server>dp32414.us-east-1.snowflakecomputing.com</server>
+    <type>SNOWFLAKE</type>
     <access>Native</access>
-    <database/>
-    <port>1521</port>
-    <username/>
-    <password>Encrypted </password>
+    <database>MSTRDBDESA</database>
+    <port>443</port>
+    <username>PDI</username>
+    <password>Encrypted 2be98afc86aa7b380a648a03e8cc2fe82</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
       <attribute>
-        <code>CUSTOM_DRIVER_CLASS</code>
-        <attribute>net.snowflake.client.jdbc.SnowflakeDriver</attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.ssl</code>
+        <attribute>on</attribute>
       </attribute>
       <attribute>
-        <code>CUSTOM_URL</code>
-        <attribute>jdbc:snowflake://dp32414.us-east-1.snowflakecomputing.com/?user=PDI&amp;private_key_file=/home/bi/Snowflake_keys/keys_pdi/pdi_key.p8</attribute>
-      </attribute>
-      <attribute>
-        <code>DATABASE_DIALECT_ID</code>
-        <attribute>Generic database</attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.warehouse</code>
+        <attribute>Compute_wh</attribute>
       </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -106,7 +106,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>1521</attribute>
+        <attribute>443</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -406,13 +406,53 @@
   <shared_objects_file/>
   <entries>
     <entry>
-      <name>Input</name>
+      <name>Start</name>
+      <description/>
+      <type>SPECIAL</type>
+      <attributes/>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>112</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>TRUNCATE TABLE ODS_MERCADERIAS.LU_ORIGEN_DESCUENTO</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>Snowflake CARGA DESA</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>256</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Carga ODS_MERCADERIAS</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/3_ETL.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\LU_ORIGEN_DESCUENTO.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -436,203 +476,88 @@
       <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
-        <parameter>
-          <name>dia_anterior</name>
-          <stream_name/>
-          <value>${dia_anterior}</value>
-        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>560</xloc>
-      <yloc>192</yloc>
+      <xloc>544</xloc>
+      <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Check Connections</name>
+      <name>UPDATE</name>
       <description/>
-      <type>CHECK_DB_CONNECTIONS</type>
+      <type>SQL</type>
       <attributes/>
-      <connections>
-        <connection>
-          <name>MSTRDB</name>
-          <waitfor>0</waitfor>
-          <waittime>millisecond</waittime>
-        </connection>
-        <connection>
-          <name>Snowflake_PDI_KEYS</name>
-          <waitfor>0</waitfor>
-          <waittime>millisecond</waittime>
-        </connection>
-      </connections>
+      <sql>delete
+from    DWH.LU_ORIGEN_DESCUENTO;
+
+INSERT INTO DWH.LU_ORIGEN_DESCUENTO
+SELECT * FROM ODS_MERCADERIAS.LU_ORIGEN_DESCUENTO</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>Snowflake CARGA DESA</connection>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>416</xloc>
-      <yloc>192</yloc>
+      <xloc>656</xloc>
+      <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Wait for</name>
+      <name>Hay datos?</name>
       <description/>
-      <type>DELAY</type>
+      <type>EVAL_TABLE_CONTENT</type>
       <attributes/>
-      <maximumTimeout>5</maximumTimeout>
-      <scaletime>0</scaletime>
+      <connection>MSTRDB PDI DESA</connection>
+      <schemaname/>
+      <tablename/>
+      <success_condition>rows_count_equal</success_condition>
+      <limit>1</limit>
+      <is_custom_sql>Y</is_custom_sql>
+      <is_usevars>N</is_usevars>
+      <custom_sql>SELECT COUNT(*) as rows_count
+FROM DWH.LU_ORIGEN_DESCUENTO</custom_sql>
+      <add_rows_result>Y</add_rows_result>
+      <clear_result_rows>Y</clear_result_rows>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>352</yloc>
+      <xloc>224</xloc>
+      <yloc>240</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>JavaScript</name>
-      <description/>
-      <type>EVAL</type>
-      <attributes/>
-      <script>var plusOne = parseInt(parent_job.getVariable("Contador_Error","")) + 1;
-
-
-parent_job.setVariable("Contador_Error",plusOne);
-
-
-true;</script>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>272</xloc>
-      <yloc>352</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Simple evaluation</name>
+      <name>? 2</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <attributes/>
-      <valuetype>variable</valuetype>
-      <fieldname/>
-      <variablename>Contador_Error</variablename>
+      <valuetype>field</valuetype>
+      <fieldname>rows_count</fieldname>
+      <variablename>${max_fecha}</variablename>
       <fieldtype>number</fieldtype>
-      <mask/>
-      <comparevalue>6</comparevalue>
+      <mask>dd/MM/yyyy</mask>
+      <comparevalue>1</comparevalue>
       <minvalue/>
       <maxvalue/>
       <successcondition>equal</successcondition>
-      <successnumbercondition>smaller</successnumbercondition>
+      <successnumbercondition>greater</successnumbercondition>
       <successbooleancondition>false</successbooleancondition>
       <successwhenvarset>N</successwhenvarset>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>528</xloc>
-      <yloc>352</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Mail_Error</name>
-      <description/>
-      <type>MAIL</type>
-      <attributes/>
-      <server>smtp.gmail.com</server>
-      <port>465</port>
-      <destination/>
-      <destinationCc/>
-      <destinationBCc/>
-      <replyto/>
-      <replytoname/>
-      <subject>PDI Alertas - Error con la conexión de las DB</subject>
-      <include_date>Y</include_date>
-      <contact_person/>
-      <contact_phone/>
-      <comment>${Contador_Error}</comment>
-      <include_files>N</include_files>
-      <zip_files>N</zip_files>
-      <zip_name/>
-      <use_auth>Y</use_auth>
-      <use_secure_auth>Y</use_secure_auth>
-      <auth_user/>
-      <auth_password>Encrypted </auth_password>
-      <only_comment>Y</only_comment>
-      <use_HTML>Y</use_HTML>
-      <use_Priority>N</use_Priority>
-      <encoding>UTF-8</encoding>
-      <priority>normal</priority>
-      <importance>normal</importance>
-      <sensitivity>normal</sensitivity>
-      <secureconnectiontype>SSL</secureconnectiontype>
-      <replyToAddresses/>
-      <filetypes>
-        <filetype>GENERAL</filetype>
-      </filetypes>
-      <embeddedimages>
-      </embeddedimages>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>352</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Start</name>
-      <description/>
-      <type>SPECIAL</type>
-      <attributes/>
-      <start>Y</start>
-      <dummy>N</dummy>
-      <repeat>N</repeat>
-      <schedulerType>0</schedulerType>
-      <intervalSeconds>0</intervalSeconds>
-      <intervalMinutes>60</intervalMinutes>
-      <hour>12</hour>
-      <minutes>0</minutes>
-      <weekDay>1</weekDay>
-      <DayOfMonth>1</DayOfMonth>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>176</xloc>
-      <yloc>192</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Set variables</name>
-      <description/>
-      <type>SET_VARIABLES</type>
-      <attributes/>
-      <replacevars>Y</replacevars>
-      <filename/>
-      <file_variable_type>JVM</file_variable_type>
-      <fields>
-        <field>
-          <variable_name>UltimoModulo</variable_name>
-          <variable_value>3_Input</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-      </fields>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>288</xloc>
-      <yloc>192</yloc>
+      <xloc>336</xloc>
+      <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>Check Connections</from>
-      <to>JavaScript</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>JavaScript</from>
-      <to>Wait for</to>
+      <from>SQL</from>
+      <to>Carga ODS_MERCADERIAS</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -640,35 +565,8 @@ true;</script>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Wait for</from>
-      <to>Simple evaluation</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Simple evaluation</from>
-      <to>Mail_Error</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Simple evaluation</from>
-      <to>Check Connections</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Check Connections</from>
-      <to>Input</to>
+      <from>Carga ODS_MERCADERIAS</from>
+      <to>UPDATE</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -677,7 +575,7 @@ true;</script>
     </hop>
     <hop>
       <from>Start</from>
-      <to>Set variables</to>
+      <to>Hay datos?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -685,8 +583,17 @@ true;</script>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Set variables</from>
-      <to>Check Connections</to>
+      <from>Hay datos?</from>
+      <to>? 2</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>? 2</from>
+      <to>SQL</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -706,10 +613,6 @@ true;</script>
     </group>
     <group>
       <name>{"_":"Embedded MetaStore Elements","namespace":"pentaho","type":"Default Run Configuration"}</name>
-      <attribute>
-        <key>Pentaho local</key>
-        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"pentaho","value":"N"},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
-      </attribute>
     </group>
   </attributes>
 </job>

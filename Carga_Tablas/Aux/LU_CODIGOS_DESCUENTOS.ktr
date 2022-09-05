@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>2_Variables</name>
+    <name>LU_CODIGOS_DESCUENTOS</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,49 +428,206 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2021/03/02 10:49:24.853</created_date>
+    <created_date>2020/02/11 14:07:14.679</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2021/03/02 10:49:24.853</modified_date>
+    <modified_date>2020/02/11 14:07:14.679</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>MSTRDB PDI DESA</name>
+    <server>mstr-desa.tata.com.uy</server>
+    <type>ORACLE</type>
+    <access>Native</access>
+    <database>mstrdbdesa</database>
+    <port>1521</port>
+    <username>dwh</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10be96b8d2</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>1521</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SQL_CONNECT</code>
+        <attribute>alter session set nls_date_format = 'DD/MM/YYYY';</attribute>
+      </attribute>
+      <attribute>
+        <code>STRICT_NUMBER_38_INTERPRETATION</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>Snowflake CARGA</name>
+    <server>dp32414.us-east-1.snowflakecomputing.com</server>
+    <type>SNOWFLAKE</type>
+    <access>Native</access>
+    <database>MSTRDB</database>
+    <port>443</port>
+    <username>PDI</username>
+    <password>Encrypted 2be98afc86aa7b380a648a03e8cc2fe82</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.ssl</code>
+        <attribute>on</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.warehouse</code>
+        <attribute>Compute_wh</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>443</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>Snowflake CARGA DESA</name>
+    <server>dp32414.us-east-1.snowflakecomputing.com</server>
+    <type>SNOWFLAKE</type>
+    <access>Native</access>
+    <database>MSTRDBDESA</database>
+    <port>443</port>
+    <username>PDI</username>
+    <password>Encrypted 2be98afc86aa7b380a648a03e8cc2fe82</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.ssl</code>
+        <attribute>on</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_SNOWFLAKE.warehouse</code>
+        <attribute>Compute_wh</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>443</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>Set dia_anterior</from>
-      <to>Copy rows to result</to>
-      <enabled>Y</enabled>
+      <from>LU_CODIGOS_DESCUENTOS</from>
+      <to>CARGA ODS</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Get system info</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Set dia_anterior</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set dia_anterior_7</from>
-      <to>Copy rows to result 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Data grid 2</from>
-      <to>Modified JavaScript value 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Modified JavaScript value 2</from>
-      <to>Set dia_anterior_7</to>
+      <from>LU_CODIGOS_DESCUENTOS</from>
+      <to>Snowflake Bulk Loader</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Copy rows to result</name>
-    <type>RowsToResult</type>
+    <name>CARGA ODS</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -479,161 +636,83 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Copy rows to result 2</name>
-    <type>RowsToResult</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Data grid 2</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
+    <connection>Snowflake CARGA</connection>
+    <schema>ODS_MERCADERIAS</schema>
+    <table>FT_VENTAS_SANROQUE</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
       <field>
-        <name>dia_anterior_7</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>a</item>
-      </line>
-    </data>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get system info</name>
-    <type>SystemInfo</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>dia_anterior</name>
-        <type>yesterday start</type>
+        <column_name>TIEM_DIA_ID</column_name>
+        <stream_name>TIEM_DIA_ID</stream_name>
       </field>
       <field>
-        <name>dia_actual</name>
-        <type>today start</type>
+        <column_name>HORA_HORA_COD</column_name>
+        <stream_name>HORA_HORA_COD</stream_name>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value 2</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var now = new Date();
-var ayer = new Date();
-ayer.setDate(now.getDate() -8) ;
-var yy = ayer.getFullYear();
-var m = ayer.getMonth() + 1;
-var d = ayer.getDate();
-var mm = m &lt; 10 ? '0' + m : m;
-var dd = d &lt; 10 ? '0' + d : d;
-var dia_anterior_7 = ''+dd+'/'+mm+'/'+yy;</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
       <field>
-        <name>dia_anterior_7</name>
-        <rename>dia_anterior_7</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
+        <column_name>ARTC_ARSR_COD</column_name>
+        <stream_name>ARTC_ARSR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>GEOG_LOSR_COD</column_name>
+        <stream_name>GEOG_LOSR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>CAJR_CASR_COD</column_name>
+        <stream_name>CAJR_CASR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>AUTORIZA_SUPERVISORA</column_name>
+        <stream_name>AUTORIZA_SUPERVISORA</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_NRO_CAJA_SR</column_name>
+        <stream_name>VNTA_NRO_CAJA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_NRO_TKT_SR</column_name>
+        <stream_name>VNTA_NRO_TKT_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_IMP_CIVA_SR</column_name>
+        <stream_name>VNTA_IMP_CIVA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_IMP_SIVA_SR</column_name>
+        <stream_name>VNTA_IMP_SIVA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_UNIDADES_SR</column_name>
+        <stream_name>VNTA_UNIDADES_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_TIPO_TKT_SR</column_name>
+        <stream_name>VNTA_TIPO_TKT_SR</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_TIPO_LINEA_SR</column_name>
+        <stream_name>VNTA_TIPO_LINEA_SR</stream_name>
+      </field>
+      <field>
+        <column_name>PROV_SRPR_COD</column_name>
+        <stream_name>PROV_SRPR_COD</stream_name>
+      </field>
+      <field>
+        <column_name>VNTA_COSTO_SR</column_name>
+        <stream_name>VNTA_COSTO_SR</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -646,13 +725,13 @@ var dia_anterior_7 = ''+dd+'/'+mm+'/'+yy;</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>288</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>LU_CODIGOS_DESCUENTOS</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -661,48 +740,109 @@ var dia_anterior_7 = ''+dd+'/'+mm+'/'+yy;</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <connection>MSTRDB PDI DESA</connection>
+    <sql>SELECT *
+FROM DWH.LU_CODIGOS_DESCUENTOS</sql>
+    <limit/>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>VNTA_COD_DESCUENTO</name>
+        <length>12</length>
+        <precision>0</precision>
+        <origin>COUNT_ARTC</origin>
+        <comments>VNTA_COD_DESCUENTO</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Madrid</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>VNTA_DESC_DESCUENTO</name>
+        <length>100</length>
+        <precision>-1</precision>
+        <origin>COUNT_ARTC</origin>
+        <comments>VNTA_DESC_DESCUENTO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Madrid</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Snowflake Bulk Loader</name>
+    <type>SnowflakeBulkLoader</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Snowflake CARGA DESA</connection>
+    <target_schema>ODS_MERCADERIAS</target_schema>
+    <target_table>LU_CODIGOS_DESCUENTOS</target_table>
+    <location_type>user</location_type>
+    <stage_name/>
+    <work_directory>/home/BI/pdi_scripts/Dossiers_nube/Aux/Carga</work_directory>
+    <on_error>abort</on_error>
+    <error_limit/>
+    <split_size>70000</split_size>
+    <remove_files>Y</remove_files>
+    <data_type>csv</data_type>
+    <trim_whitespace>Y</trim_whitespace>
+    <null_if/>
+    <error_column_mismatch>Y</error_column_mismatch>
+    <strip_null>N</strip_null>
+    <ignore_utf8>N</ignore_utf8>
+    <allow_duplicate_element>N</allow_duplicate_element>
+    <enable_octal>N</enable_octal>
+    <json_field/>
+    <specify_fields>N</specify_fields>
     <fields>
-      <field>
-        <name>dia_anterior</name>
-      </field>
-      <field>
-        <name>dia_actual</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>dia_anterior</name>
-        <rename>dia_anterior</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>dd/MM/yyyy</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>dia_actual</name>
-        <rename>dia_actual</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>dd/MM/yyyy</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -715,80 +855,6 @@ var dia_anterior_7 = ''+dd+'/'+mm+'/'+yy;</jsScript_script>
     <GUI>
       <xloc>384</xloc>
       <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set dia_anterior</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <field_name>dia_anterior</field_name>
-        <variable_name>dia_anterior</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>dia_actual</field_name>
-        <variable_name>dia_actual</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set dia_anterior_7</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <field_name>dia_anterior_7</field_name>
-        <variable_name>dia_anterior_7</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
