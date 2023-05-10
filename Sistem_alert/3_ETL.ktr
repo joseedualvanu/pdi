@@ -501,7 +501,7 @@
   </notepads>
   <connection>
     <name>MSTRDB PDI</name>
-    <server>172.16.125.125</server>
+    <server>172.18.2.109</server>
     <type>ORACLE</type>
     <access>Native</access>
     <database>MSTRDB</database>
