@@ -505,7 +505,7 @@ SELECT * FROM ODS_MERCADERIAS.FT_PPTO_MERMA_AVERIA</sql>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>672</xloc>
       <yloc>240</yloc>
       <attributes_kjc/>
     </entry>

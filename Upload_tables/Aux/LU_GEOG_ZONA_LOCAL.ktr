@@ -735,7 +735,7 @@ FROM DWH.LU_GEOG_ZONA_LOCAL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>416</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>

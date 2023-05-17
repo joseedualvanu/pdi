@@ -446,7 +446,7 @@ SELECT * FROM ODS_MERCADERIAS.LU_GEOG_ZONA_LOCAL</sql>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>672</xloc>
       <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
